@@ -2,4 +2,12 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  form(name="add-resposta", method="submit", action="/resposta") 
+    div.input 
+      //span.label nome
+      input(type="text", name="nome", placeholder="nome")
+    div.input 
+      //span.label email
+      input(type="email", name="email", placeholder="E-mail")
+    div.action
+      input(type="submit", value="enviar")

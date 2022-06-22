@@ -1,18 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var nodemailer = require('nodemailer');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/enviar', async function main(req, res){
-  // Generate test SMTP service account from ethereal.email
-  // Only needed if you don't have a real mail account for testing
-  let testAccount = await nodemailer.createTestAccount();
+router.get('/resposta', async function (req, res, next){
 
   // create reusable transporter object using the default SMTP transport
-  let transport = nodemailer.createTransport({
+  var transport = nodemailer.createTransport({
     host: "smtp.mailtrap.io",
     port: 2525,
     auth: {
@@ -22,12 +20,12 @@ router.get('/enviar', async function main(req, res){
   });
 
   // send mail with defined transport object
-  let info = await transporter.sendMail({
+  let info = await transport.sendMail({
     from: '"Fred Foo 👻" <foo@example.com>', // sender address
     to: "bar@example.com, baz@example.com", // list of receivers
     subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+    text: "zalve", // plain text body
+    html: "<b>mizera</b>", // html body
   });
 
   console.log("Message sent: %s", info.messageId);
